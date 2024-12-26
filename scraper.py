@@ -93,7 +93,6 @@ class TwitterScraper:
             
             # Wait for home page to load
             time.sleep(10)
-            #dhruv156328@gmail.com
             # Update the trends section finder in get_trending_topics():
             print("Looking for trends section...")
 
@@ -143,7 +142,7 @@ class TwitterScraper:
                     continue
 
             # Fill remaining slots if we couldn't get 5 trends
-            while len(trends) < 5:
+            while len(trends) < 4:
                 trends.append("Unable to fetch trend")
 
             print(f"Found {len(trends)} trends...")

@@ -24,6 +24,7 @@ HTML_TEMPLATE = """
             background-color: #16181c;
             border-radius: 16px;
             padding: 16px;
+            margin-bottom: 20px;
         }
         .header {
             font-size: 20px;
@@ -59,6 +60,30 @@ HTML_TEMPLATE = """
             margin-top: 12px;
             text-align: center;
         }
+        .mongodb-section {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #16181c;
+            border-radius: 16px;
+            padding: 16px;
+        }
+        .mongo-header {
+            font-size: 16px;
+            color: #71767b;
+            margin-bottom: 16px;
+        }
+        .mongo-content {
+            background-color: #2f3336;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .trend-summary {
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -77,6 +102,32 @@ HTML_TEMPLATE = """
             <button onclick="window.location.href='/scrape'" class="run-button">Get Trends</button>
         {% endif %}
     </div>
+
+    {% if result %}
+    <div class="mongodb-section">
+        <div class="mongo-header">Query Details</div>
+        <div class="trend-summary">
+            These are the most happening topics as on {{ result.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}:
+            {% for i in range(1, 6) %}
+                - {{ result["nameoftrend" ~ i] }}
+            {% endfor %}
+            <br><br>
+            The IP address used for this query was {{ result.ip_address }}
+        </div>
+        <div class="mongo-header">MongoDB Record:</div>
+        <div class="mongo-content">
+{
+    "_id": "{{ result._id }}",
+    "nameoftrend1": "{{ result.nameoftrend1 }}",
+    "nameoftrend2": "{{ result.nameoftrend2 }}",
+    "nameoftrend3": "{{ result.nameoftrend3 }}",
+    "nameoftrend4": "{{ result.nameoftrend4 }}",
+    "nameoftrend5": "{{ result.nameoftrend5 }}",
+    "timestamp": "{{ result.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}",
+    "ip_address": "{{ result.ip_address }}"
+}</div>
+    </div>
+    {% endif %}
 </body>
 </html>
 """
