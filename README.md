@@ -18,7 +18,7 @@ A web application that automatically scrapes and displays trending topics from T
 Twitter Trends Scraper is a full-stack web application that automatically logs into Twitter, scrapes the current trending topics, stores them in a MongoDB database, and displays them in a clean, Twitter-inspired interface. The application updates trends on demand and shows timestamps for each update.
 
 ## 🎥 Project Demo
-[Watch the Demo Video]()
+[Watch the Demo Video](https://youtu.be/tOXXuKvZN2E)
 
 ### Key Features:
 - **Automated Login**: Securely logs into Twitter using provided credentials
